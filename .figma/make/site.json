@@ -1,0 +1,10 @@
+{
+  "description": "Connect and collaborate seamlessly with a versatile platform designed to streamline communication and boost productivity for teams and individuals.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

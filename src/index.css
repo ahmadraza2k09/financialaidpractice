@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-ink: #292626;
+  --color-ink-90: rgba(41, 38, 38, 0.9);
+  --color-ink-60: rgba(41, 38, 38, 0.6);
+  --color-ink-30: rgba(41, 38, 38, 0.3);
+  --color-ink-10: rgba(41, 38, 38, 0.1);
+  --color-ink-05: rgba(41, 38, 38, 0.05);
+  --color-paper: #ffffff;
+  --color-paper-soft: #fafafa;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #292626;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(41,38,38,0.2); border-radius: 3px; }
+
+/* Range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: rgba(41,38,38,0.2);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #292626;
+  cursor: pointer;
+}
+
