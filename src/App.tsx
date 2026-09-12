@@ -118,7 +118,7 @@ const APP_SECTIONS = [
   {
     id: "personal",
     title: "Personal Information",
-    description: "Legal identification, contact info, citizenship, and passport details (KL-YES & Common App Standard)",
+    description: "Legal identification, contact info, citizenship, and passport details (Exchange Program & University Standard)",
     fields: [
       { id: "fullName", label: "Full Legal Name (as on Passport / Birth Certificate / CNIC)", type: "text", placeholder: "e.g. Sara Ahmed", required: true },
       { id: "preferredName", label: "Preferred / Given Name", type: "text", placeholder: "e.g. Sara" },
@@ -137,15 +137,15 @@ const APP_SECTIONS = [
     title: "Education & Academic Records",
     description: "Current school profile, transcripts history, ELTiS/English proficiency, and counselors",
     fields: [
-      { id: "schoolName", label: "Current High School / College Name", type: "text", placeholder: "e.g. Lahore Grammar School", required: true },
+      { id: "schoolName", label: "Current High School / College Name", type: "text", placeholder: "e.g. High School / College Name", required: true },
       { id: "currentGrade", label: "Current Grade Level", type: "select", options: ["Grade 9", "Grade 10 (Matric)", "Grade 11 (FSc / AS-Level)", "Grade 12 (FSc / A-Level)", "Other"] },
       { id: "graduationYear", label: "Expected Graduation Year", type: "text", placeholder: "e.g. 2026" },
       { id: "gpa", label: "Past 3 Years Academic Performance (Grade 9, 10, 11 % / GPA)", type: "text", placeholder: "e.g. Grade 9: 88%, Grade 10: 91%, Grade 11: 89%" },
       { id: "gradingScale", label: "Grading Scale Type", type: "select", options: ["Percentage (%)", "4.0 Scale", "5.0 Scale", "A-Levels / O-Levels (Grades)", "IB (1-7)"] },
-      { id: "hasRepeatedGrade", label: "Have you ever repeated a grade or transferred schools? (KL-YES requirement)", type: "select", options: ["No", "Yes (explain in notes below)"] },
+      { id: "hasRepeatedGrade", label: "Have you ever repeated a grade or transferred schools? (Exchange Program requirement)", type: "select", options: ["No", "Yes (explain in notes below)"] },
       { id: "englishProficiency", label: "English Language Proficiency Level", type: "select", options: ["Beginner", "Intermediate", "Advanced", "Native / Fluent", "ELTiS / TOEFL Score Available"] },
       { id: "intendedMajor", label: "Intended Major / Field of Interest", type: "text", placeholder: "e.g. Computer Science, Public Policy, Engineering, Economics" },
-      { id: "counselorName", label: "School Principal / Teacher Referee Name", type: "text", placeholder: "e.g. Mr. Tariq Mahmood (Vice Principal)" },
+      { id: "counselorName", label: "School Principal / Teacher Referee Name", type: "text", placeholder: "e.g. Vice Principal / Teacher Name" },
       { id: "counselorEmail", label: "Referee Email Address", type: "text", placeholder: "teacher.referee@school.edu" },
     ],
   },
@@ -161,29 +161,29 @@ const APP_SECTIONS = [
       { id: "parent2Occupation", label: "Parent 2 Occupation & Employer Name", type: "text", placeholder: "e.g. Homemaker, Private Business" },
       { id: "parent2Education", label: "Parent 2 Highest Education Level", type: "select", options: ["High School", "Bachelor's Degree", "Master's Degree", "Doctorate / Professional", "Other / None"] },
       { id: "householdSize", label: "Total Household Size & School-going Siblings", type: "text", placeholder: "e.g. 5 members (2 siblings in school)" },
-      { id: "familyAbroadHistory", label: "Have immediate family members studied or lived abroad / in the US?", type: "select", options: ["No", "Yes (provide details in notes)"] },
+      { id: "familyAbroadHistory", label: "Have immediate family members studied or lived abroad?", type: "select", options: ["No", "Yes (provide details in notes)"] },
       { id: "primaryLanguage", label: "Primary Language Spoken at Home", type: "text", placeholder: "e.g. Urdu, Pashto, Punjabi, English" },
     ],
   },
   {
     id: "klyes_essays",
-    title: "KL-YES & Application Essays",
-    description: "Practice authentic essay prompts from KL-YES Youth Exchange and Common App Personal Statement",
+    title: "Exchange & Application Practice Essays",
+    description: "Practice authentic essay prompts for Exchange Programs and University Personal Statements",
     fields: [
-      { id: "klyesEssay1", label: "KL-YES Essay 1: Cultural Exchange & Adaptability (250-400 words)", type: "textarea", placeholder: "Describe a difficult situation or cultural misunderstanding you experienced. How did you handle it and what did you learn about adapting to new environments?" },
-      { id: "klyesEssay2", label: "KL-YES Essay 2: Host Family & Community Ambassadorship (250-400 words)", type: "textarea", placeholder: "Why do you want to live with an American host family? How will you represent your Pakistani culture and share your background with your host school and community?" },
+      { id: "klyesEssay1", label: "Exchange Essay 1: Cultural Exchange & Adaptability (250-400 words)", type: "textarea", placeholder: "Describe a difficult situation or cultural misunderstanding you experienced. How did you handle it and what did you learn about adapting to new environments?" },
+      { id: "klyesEssay2", label: "Exchange Essay 2: Host Family & Community Ambassadorship (250-400 words)", type: "textarea", placeholder: "Why do you want to live with an international host family? How will you represent your culture and share your background with your host school and community?" },
       { id: "hostFamilyLetter", label: "Host Family Introductory Letter Draft (300-500 words)", type: "textarea", placeholder: "Dear Host Family, Write a warm letter introducing yourself, your family, daily routines, hobbies, interests, and why you are excited for this exchange program..." },
-      { id: "commonAppEssay", label: "Common App Main Essay / Personal Statement Draft (650 words max)", type: "textarea", placeholder: "Write your main personal statement (Background/Identity, Overcoming a setback, Challenging an idea, Gratitude/Problem solved, or Topic of Choice)..." },
+      { id: "commonAppEssay", label: "Personal Statement / Main Application Essay Draft (650 words max)", type: "textarea", placeholder: "Write your main personal statement (Background/Identity, Overcoming a setback, Challenging an idea, Gratitude/Problem solved, or Topic of Choice)..." },
     ],
   },
   {
     id: "future",
     title: "Future Plans & Target Programs",
-    description: "Target exchange programs (KL-YES 2026-2027), universities, deadlines, and career goals",
+    description: "Target exchange programs, universities, deadlines, and career goals",
     fields: [
-      { id: "targetUniversities", label: "Target Exchange Programs & Universities", type: "textarea", placeholder: "e.g. KL-YES Pakistan 2026-2027, US Embassy UGRAD, LUMS, NUST, Harvard, MIT" },
-      { id: "degreeType", label: "Program / Application Type", type: "select", options: ["High School Exchange (KL-YES / FLEX)", "Undergraduate Bachelor's (Common App / College)", "Short-Term Leadership Fellowship (UGRAD)", "Other"] },
-      { id: "applicationDeadlines", label: "Target Application Deadlines", type: "text", placeholder: "e.g. KL-YES: October 30; Common App ED: November 1; RD: January 1" },
+      { id: "targetUniversities", label: "Target Exchange Programs & Universities", type: "textarea", placeholder: "e.g. International Exchange Program, Leadership Fellowship, National Universities, Overseas Universities" },
+      { id: "degreeType", label: "Program / Application Type", type: "select", options: ["High School Exchange Program", "Undergraduate Bachelor's Program", "Leadership & Exchange Fellowship", "Other"] },
+      { id: "applicationDeadlines", label: "Target Application Deadlines", type: "text", placeholder: "e.g. Exchange Program: October 30; Early Action: November 1; Regular Decision: January 1" },
       { id: "careerGoals", label: "Long-term Career & Community Impact Goals", type: "textarea", placeholder: "What career path do you plan to pursue after your studies/exchange, and how will you give back to your community?" },
     ],
   },
@@ -385,12 +385,12 @@ const SAMPLE_APP_DATA: ApplicationData = {
   familyAbroadHistory: "No",
   primaryLanguage: "Urdu & English",
   klyesEssay1: "When our school debate team faced a sudden venue change in another city, team members were anxious. I organized emergency housing with alumni and rescheduled practice sessions, teaching me how resilience and proactive communication resolve unexpected cultural and logistical hurdles.",
-  klyesEssay2: "Living with an American host family will allow me to share authentic Pakistani traditions, cuisine like Biryani and Chai, and Islamic cultural values, while learning firsthand about American civic life, high school traditions, and community volunteering.",
-  hostFamilyLetter: "Dear Host Family,\n\nMy name is Sara and I am an 11th-grade student from Lahore, Pakistan. In my free time, I love debating, reading historical fiction, and baking with my younger sister. My father is a high school teacher and my mother manages our home. I am eager to experience an American high school year, share my culture, and become an active member of your family and community!\n\nWarmly,\nSara",
+  klyesEssay2: "Living with an international host family will allow me to share authentic local traditions, cuisine, and cultural values, while learning firsthand about host country civic life, high school traditions, and community volunteering.",
+  hostFamilyLetter: "Dear Host Family,\n\nMy name is Sara and I am an 11th-grade student. In my free time, I love debating, reading historical fiction, and baking with my younger sister. My father is a high school teacher and my mother manages our home. I am eager to experience an international high school year, share my culture, and become an active member of your family and community!\n\nWarmly,\nSara",
   commonAppEssay: "Building a free online tutoring network during the pandemic showed me how technology bridges educational inequality in underserved communities...",
-  targetUniversities: "1. KL-YES Program (Pakistan 2026-2027)\n2. Lahore University of Management Sciences (LUMS)\n3. US Embassy Global UGRAD",
-  degreeType: "High School Exchange (KL-YES / FLEX)",
-  applicationDeadlines: "KL-YES: October 30; LUMS: January 30",
+  targetUniversities: "1. Youth Exchange Program\n2. National University Program\n3. Leadership Fellowship",
+  degreeType: "High School Exchange Program",
+  applicationDeadlines: "Exchange Program: October 30; University Application: January 30",
   careerGoals: "Aspiring software engineer and public policy advocate working to enhance educational technology access across South Asia.",
 };
 
@@ -582,7 +582,7 @@ function generateAndDownloadPDF(state: AppState, filenameSuffix = "Practice_Prog
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9.5);
     doc.rect(margin, y, pageWidth - margin * 2, 20, "F");
-    doc.text("1. APPLICATION PRACTICE PROFILE (KL-YES & UNIVERSITY STANDARD)", margin + 10, y + 14);
+    doc.text("1. APPLICATION PRACTICE PROFILE (EXCHANGE PROGRAM & UNIVERSITY STANDARD)", margin + 10, y + 14);
     y += 30;
 
     doc.setTextColor(40, 40, 40);
@@ -616,10 +616,10 @@ function generateAndDownloadPDF(state: AppState, filenameSuffix = "Practice_Prog
 
     // Essays
     const essays = [
-      ["KL-YES Essay 1 (Cultural Exchange & Adaptability):", state.appData.klyesEssay1],
-      ["KL-YES Essay 2 (Host Family & Culture):", state.appData.klyesEssay2],
+      ["Exchange Essay 1 (Cultural Exchange & Adaptability):", state.appData.klyesEssay1],
+      ["Exchange Essay 2 (Host Family & Culture):", state.appData.klyesEssay2],
       ["Host Family Introductory Letter Draft:", state.appData.hostFamilyLetter],
-      ["Common App Main Essay Draft:", state.appData.commonAppEssay],
+      ["Personal Statement Main Essay Draft:", state.appData.commonAppEssay],
     ];
 
     essays.forEach(([title, body]) => {
@@ -775,7 +775,7 @@ function generateAndDownloadPDF(state: AppState, filenameSuffix = "Practice_Prog
     doc.text("EDUCATIONAL PRACTICE DISCLAIMER:", margin, y);
     y += 11;
     doc.setFont("helvetica", "normal");
-    doc.text("This document is generated by Ready To Apply for self-assessment and practice purposes only. It is NOT an official college, exchange program (KL-YES), or financial aid application.", margin, y);
+    doc.text("This document is generated by Ready To Apply for self-assessment and practice purposes only. It is NOT an official college, exchange program, or financial aid application.", margin, y);
 
     doc.save(`Ready_To_Apply_${filenameSuffix}.pdf`);
   } catch (err) {
@@ -1482,7 +1482,7 @@ function ApplicationPracticeModule({
             </h1>
             <PracticeBadge />
           </div>
-          <p className="text-xs text-gray-600">Practice authentic fields from KL-YES, Common App, and University applications.</p>
+          <p className="text-xs text-gray-600">Practice authentic fields from Exchange Programs and University applications.</p>
         </div>
         <div className="text-xs font-semibold text-gray-500 self-start md:self-auto">
           Section {activeSecIdx + 1} of {APP_SECTIONS.length}
@@ -1492,10 +1492,10 @@ function ApplicationPracticeModule({
       {/* Real Application Standard Guidance Banner */}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6 text-xs text-gray-700 space-y-1">
         <div className="font-bold text-[#363636]">
-          Real Application Preparation Mode — KL-YES &amp; University Standard
+          Real Application Preparation Mode — Exchange Program &amp; University Standard
         </div>
         <p className="text-gray-600 leading-relaxed">
-          These practice fields are modeled after famous real applications including <strong>Kennedy-Lugar Youth Exchange &amp; Study (KL-YES)</strong>, <strong>Common Application</strong>, and <strong>Global UGRAD</strong>. Practice entering past 3 years marksheets, teacher referee details, cultural adaptability essays, and host family letters so you are 100% prepared with required thoughts and paperwork before submitting the actual application!
+          These practice fields are modeled after famous real applications including <strong>International Exchange Programs</strong>, <strong>University Applications</strong>, and <strong>Scholarship Fellowships</strong>. Practice entering past 3 years marksheets, teacher referee details, cultural adaptability essays, and host family letters so you are 100% prepared with required thoughts and paperwork before submitting the actual application!
         </p>
       </div>
 
