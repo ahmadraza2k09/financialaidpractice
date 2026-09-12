@@ -888,16 +888,117 @@ interface CustomNoteItem {
   description: string;
 }
 
+const CONTEXT_NOTES_CONFIG: Record<
+  string,
+  {
+    titlePlaceholder: string;
+    valuePlaceholder: string;
+    descPlaceholder: string;
+    subtext: string;
+  }
+> = {
+  // Application Practice Sections
+  personal: {
+    titlePlaceholder: "Information Title (e.g. Passport renewal status, Dual citizenship, CNIC verification)",
+    valuePlaceholder: "Status / Reference (e.g. Passport Pending, CNIC Valid)",
+    descPlaceholder: "Add custom details to clarify your legal name, passport status, or contact information...",
+    subtext: "Add custom details or explanations regarding your legal identification, passport, or contact information.",
+  },
+  education: {
+    titlePlaceholder: "Information Title (e.g. Gap Year explanation, Marksheet conversion, School transfer)",
+    valuePlaceholder: "Grade / Status (e.g. Grade 10: 91%, Gap Year 2024-2025)",
+    descPlaceholder: "Add custom details to clarify your academic transcripts, test scores, gap years, or school transfers...",
+    subtext: "Add custom details or explanations to clarify your academic transcripts, test scores, or school profile.",
+  },
+  family: {
+    titlePlaceholder: "Information Title (e.g. Guardian custody, Single parent household, Family abroad note)",
+    valuePlaceholder: "Status / Relationship (e.g. Father Retired, Living in UAE)",
+    descPlaceholder: "Add custom details regarding your parent/guardian background, family circumstances, or household structure...",
+    subtext: "Add custom details or explanations regarding your parent/guardian background or household structure.",
+  },
+  klyes_essays: {
+    titlePlaceholder: "Information Title (e.g. Essay prompt selection, Cultural background context)",
+    valuePlaceholder: "Topic / Status (e.g. Exchange Essay 1 Note)",
+    descPlaceholder: "Add custom notes or explanations regarding your essay drafts or host family letter...",
+    subtext: "Add custom notes or explanations regarding your application essays.",
+  },
+
+  // Financial Aid Practice Modules
+  income: {
+    titlePlaceholder: "Information Title (e.g. Monthly pension breakdown, Seasonal farm income, Business bonus)",
+    valuePlaceholder: "Monthly Amount / Status (e.g. PKR 35,000/mo Pension)",
+    descPlaceholder: "Add explanations for income sources, employment contracts, pension plans, or seasonal earnings...",
+    subtext: "Add details clarifying parent income sources, employment contracts, or pension plans.",
+  },
+  bank: {
+    titlePlaceholder: "Information Title (e.g. Provident fund savings, Fixed deposit maturity, Foreign currency account)",
+    valuePlaceholder: "Balance / Account Type (e.g. PKR 150,000 Provident Fund)",
+    descPlaceholder: "Add explanations for bank account balances, term deposits, savings certificates, or joint holdings...",
+    subtext: "Add details clarifying bank balances, savings certificates, or joint account holdings.",
+  },
+  assets: {
+    titlePlaceholder: "Information Title (e.g. Agricultural land share, Inherited property note, Vehicle registration)",
+    valuePlaceholder: "Estimated Share / Value (e.g. 25% Inherited Land Share)",
+    descPlaceholder: "Add explanations regarding land ownership shares, vehicle registration, property deeds, or commercial assets...",
+    subtext: "Add details clarifying property ownership shares, vehicle valuations, or real estate assets.",
+  },
+  housing: {
+    titlePlaceholder: "Information Title (e.g. Rental lease agreement terms, Employer quarters allowance)",
+    valuePlaceholder: "Monthly Rent / Status (e.g. PKR 25,000/mo Rent)",
+    descPlaceholder: "Add details regarding house ownership status, rental lease agreements, or accommodation arrangements...",
+    subtext: "Add details clarifying current housing, rental lease terms, or living quarters.",
+  },
+  taxes: {
+    titlePlaceholder: "Information Title (e.g. NTN tax exemption status, Agriculture tax receipt, Wealth statement)",
+    valuePlaceholder: "Tax Year / Status (e.g. Tax Year 2025 Filer)",
+    descPlaceholder: "Add explanations for tax return filings, NTN certificates, tax exemption status, or wealth statements...",
+    subtext: "Add details clarifying tax return filings, NTN certificates, or tax exemptions.",
+  },
+  expenses: {
+    titlePlaceholder: "Information Title (e.g. Chronic medical expense, House rent agreement, Utility bill breakdown)",
+    valuePlaceholder: "Monthly Cost (e.g. PKR 18,000/mo Medical)",
+    descPlaceholder: "Add details clarifying family healthcare costs, loan repayments, educational fees, or utility expenses...",
+    subtext: "Add details clarifying family utility bills, healthcare costs, loan repayments, or rent.",
+  },
+  loans: {
+    titlePlaceholder: "Information Title (e.g. Student loan repayment, Bank mortgage, Informal family debt)",
+    valuePlaceholder: "Loan Amount / Status (e.g. PKR 200,000 Outstanding)",
+    descPlaceholder: "Add explanations regarding family loan agreements, monthly repayments, lender terms, or debt burden...",
+    subtext: "Add details clarifying outstanding loans, debt obligations, or repayment terms.",
+  },
+  dependents: {
+    titlePlaceholder: "Information Title (e.g. Elderly grandparent care, Special needs sibling, School-going dependents)",
+    valuePlaceholder: "Count / Status (e.g. 2 Elderly Dependents)",
+    descPlaceholder: "Add details regarding non-earning family members, eldercare expenses, or school-going siblings...",
+    subtext: "Add details regarding family dependencies, elderly care, or household dependents.",
+  },
+  travel: {
+    titlePlaceholder: "Information Title (e.g. Commute route cost, Daily van fare, Inter-city travel for studies)",
+    valuePlaceholder: "Monthly Fare (e.g. PKR 6,000/mo School Bus)",
+    descPlaceholder: "Add details clarifying daily transportation expenses, student van fares, or commute arrangements...",
+    subtext: "Add details clarifying transportation, student commuting, or travel expenses.",
+  },
+};
+
 function AdditionalModuleNotes({
   notes,
   onUpdateNotes,
+  sectionId,
 }: {
   notes: CustomNoteItem[];
   onUpdateNotes: (updated: CustomNoteItem[]) => void;
+  sectionId?: string;
 }) {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
   const [description, setDescription] = useState("");
+
+  const config = (sectionId && CONTEXT_NOTES_CONFIG[sectionId]) || {
+    titlePlaceholder: "Information Title (e.g. Clarification, Additional Details)",
+    valuePlaceholder: "Value / Amount / Status (optional)",
+    descPlaceholder: "Detailed description / explanation for better understanding...",
+    subtext: "Add custom details or explanations to clarify your information in this section.",
+  };
 
   const handleAdd = () => {
     if (!title.trim() && !description.trim()) return;
@@ -925,7 +1026,7 @@ function AdditionalModuleNotes({
             Additional Information &amp; Notes
           </h3>
           <p className="text-xs text-gray-500">
-            Add custom details or explanations to clarify your information in this section.
+            {config.subtext}
           </p>
         </div>
         <span className="text-xs font-semibold text-gray-500 hidden sm:inline">
@@ -967,21 +1068,21 @@ function AdditionalModuleNotes({
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
-            placeholder="Information Title (e.g. Pension note, Clarification, Gap Year)"
+            placeholder={config.titlePlaceholder}
             className="border border-gray-300 rounded-lg px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#363636]"
           />
           <input
             type="text"
             value={value}
             onChange={e => setValue(e.target.value)}
-            placeholder="Value / Amount / Status (optional)"
+            placeholder={config.valuePlaceholder}
             className="border border-gray-300 rounded-lg px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#363636]"
           />
         </div>
         <textarea
           value={description}
           onChange={e => setDescription(e.target.value)}
-          placeholder="Detailed description / explanation for better understanding..."
+          placeholder={config.descPlaceholder}
           rows={2}
           className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs bg-white resize-none focus:outline-none focus:ring-2 focus:ring-[#363636]"
         />
@@ -1569,9 +1670,10 @@ function ApplicationPracticeModule({
           })}
         </div>
 
-        {/* Additional Module Notes & Information (hidden on Future Goals & Aspirations section) */}
+        {/* Additional Module Notes & Information (Context-aware, hidden on Future Goals & Aspirations section) */}
         {sec.id !== "future" && (
           <AdditionalModuleNotes
+            sectionId={sec.id}
             notes={((formData as any)[sec.id + "_customNotes"] as CustomNoteItem[]) ?? []}
             onUpdateNotes={(updated) => handleChange(sec.id + "_customNotes", updated as any)}
           />
@@ -1999,8 +2101,9 @@ function FinancialAidModule({
             </div>
           )}
 
-          {/* Additional Module Notes & Information (Available in ALL 11 Financial Aid Modules) */}
+          {/* Additional Module Notes & Information (Context-aware per Financial Aid Module) */}
           <AdditionalModuleNotes
+            sectionId={mod.id}
             notes={(formData.customNotes as CustomNoteItem[]) ?? []}
             onUpdateNotes={(updated) => setValue("customNotes", updated as any)}
           />
