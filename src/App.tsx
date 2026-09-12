@@ -1569,11 +1569,13 @@ function ApplicationPracticeModule({
           })}
         </div>
 
-        {/* Additional Module Notes & Information */}
-        <AdditionalModuleNotes
-          notes={((formData as any)[sec.id + "_customNotes"] as CustomNoteItem[]) ?? []}
-          onUpdateNotes={(updated) => handleChange(sec.id + "_customNotes", updated as any)}
-        />
+        {/* Additional Module Notes & Information (hidden on Future Goals & Aspirations section) */}
+        {sec.id !== "future" && (
+          <AdditionalModuleNotes
+            notes={((formData as any)[sec.id + "_customNotes"] as CustomNoteItem[]) ?? []}
+            onUpdateNotes={(updated) => handleChange(sec.id + "_customNotes", updated as any)}
+          />
+        )}
       </div>
 
       {/* Buttons */}
