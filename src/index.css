@@ -1,28 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --font-serif: 'Lora', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --color-ink: #292626;
-  --color-ink-90: rgba(41, 38, 38, 0.9);
-  --color-ink-60: rgba(41, 38, 38, 0.6);
-  --color-ink-30: rgba(41, 38, 38, 0.3);
-  --color-ink-10: rgba(41, 38, 38, 0.1);
-  --color-ink-05: rgba(41, 38, 38, 0.05);
+  --font-serif: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-sans: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-heading: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --color-ink: #363636;
+  --color-ink-90: rgba(54, 54, 54, 0.9);
+  --color-ink-60: rgba(54, 54, 54, 0.6);
+  --color-ink-30: rgba(54, 54, 54, 0.3);
+  --color-ink-10: rgba(54, 54, 54, 0.1);
+  --color-ink-05: rgba(54, 54, 54, 0.05);
   --color-paper: #ffffff;
-  --color-paper-soft: #fafafa;
+  --color-paper-soft: #f9fafb;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-html {
-  font-family: 'Inter', system-ui, sans-serif;
-  color: #292626;
+html, body, button, input, select, textarea {
+  font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+  color: #363636;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading, .font-accent {
+  font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 /* Scrollbar */

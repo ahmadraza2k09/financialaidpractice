@@ -1,5 +1,9 @@
 {
-  "description": "Connect and collaborate seamlessly with a versatile platform designed to streamline communication and boost productivity for teams and individuals.",
+  "title": "Ready To Apply",
+  "description": "Ready To Apply — Practice financial aid forms before completing real applications. A Youth Awareness Network Initiative.",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
   "robots": {
     "index": false
   },
