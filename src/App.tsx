@@ -41,8 +41,9 @@ interface ApplicationData {
   householdSize?: string;
   primaryLanguage?: string;
 
-  targetUniversities?: string;
-  degreeType?: string;
+  fiveYearVision?: string;
+  whySelected?: string;
+  communityContribution?: string;
   careerGoals?: string;
   personalStatementNotes?: string;
   [key: string]: any;
@@ -178,13 +179,13 @@ const APP_SECTIONS = [
   },
   {
     id: "future",
-    title: "Future Plans & Target Programs",
-    description: "Target exchange programs, universities, deadlines, and career goals",
+    title: "Future Goals & Aspirations",
+    description: "Practice authentic essay prompts on 5-year goals, personal merit, community impact, and career vision",
     fields: [
-      { id: "targetUniversities", label: "Target Exchange Programs & Universities", type: "textarea", placeholder: "e.g. International Exchange Program, Leadership Fellowship, National Universities, Overseas Universities" },
-      { id: "degreeType", label: "Program / Application Type", type: "select", options: ["High School Exchange Program", "Undergraduate Bachelor's Program", "Leadership & Exchange Fellowship", "Other"] },
-      { id: "applicationDeadlines", label: "Target Application Deadlines", type: "text", placeholder: "e.g. Exchange Program: October 30; Early Action: November 1; Regular Decision: January 1" },
-      { id: "careerGoals", label: "Long-term Career & Community Impact Goals", type: "textarea", placeholder: "What career path do you plan to pursue after your studies/exchange, and how will you give back to your community?" },
+      { id: "fiveYearVision", label: "Where do you see yourself in the next 5 years? (200-350 words)", type: "textarea", placeholder: "Describe your academic, personal, and professional goals for the next 5 years. Where do you hope to be studying, working, or leading?" },
+      { id: "whySelected", label: "Why should you be selected for this opportunity / scholarship? (200-350 words)", type: "textarea", placeholder: "Highlight your unique background, achievements, perseverance, personal values, and why you are a strong candidate for this opportunity..." },
+      { id: "communityContribution", label: "How will you contribute to your community upon completing this program? (200-350 words)", type: "textarea", placeholder: "Detail how you plan to give back, share your knowledge, or launch initiatives to create positive social impact in your home community..." },
+      { id: "careerGoals", label: "Long-Term Career & Academic Aspirations (150-250 words)", type: "textarea", placeholder: "What career path or field of study do you plan to pursue, and why are you passionate about it?" },
     ],
   },
 ];
@@ -388,9 +389,9 @@ const SAMPLE_APP_DATA: ApplicationData = {
   klyesEssay2: "Living with an international host family will allow me to share authentic local traditions, cuisine, and cultural values, while learning firsthand about host country civic life, high school traditions, and community volunteering.",
   hostFamilyLetter: "Dear Host Family,\n\nMy name is Sara and I am an 11th-grade student. In my free time, I love debating, reading historical fiction, and baking with my younger sister. My father is a high school teacher and my mother manages our home. I am eager to experience an international high school year, share my culture, and become an active member of your family and community!\n\nWarmly,\nSara",
   commonAppEssay: "Building a free online tutoring network during the pandemic showed me how technology bridges educational inequality in underserved communities...",
-  targetUniversities: "1. Youth Exchange Program\n2. National University Program\n3. Leadership Fellowship",
-  degreeType: "High School Exchange Program",
-  applicationDeadlines: "Exchange Program: October 30; University Application: January 30",
+  fiveYearVision: "In the next 5 years, I envision completing my undergraduate degree in Computer Science & Public Policy, conducting student research on educational equity, and securing a leadership role in an international youth development organization.",
+  whySelected: "I should be selected because of my proven resilience in overcoming resource constraints in my school, my top 5% academic standing, and my deep dedication to cross-cultural leadership and community service.",
+  communityContribution: "Upon completing this program, I plan to establish a free peer-mentorship and digital skills workshop for students in underserved rural schools, helping them develop digital literacy and access global learning opportunities.",
   careerGoals: "Aspiring software engineer and public policy advocate working to enhance educational technology access across South Asia.",
 };
 
@@ -601,7 +602,6 @@ function generateAndDownloadPDF(state: AppState, filenameSuffix = "Practice_Prog
       ["Past 3 Years Marks/GPA:", state.appData.gpa || "Not specified"],
       ["English Proficiency Level:", state.appData.englishProficiency || "Not specified"],
       ["Teacher Referee / Counselor:", `${state.appData.counselorName || "Not specified"} (${state.appData.counselorEmail || ""})`],
-      ["Target Exchange & Universities:", state.appData.targetUniversities || "Not specified"],
     ];
 
     appFields.forEach(([label, val]) => {
@@ -614,12 +614,16 @@ function generateAndDownloadPDF(state: AppState, filenameSuffix = "Practice_Prog
       y += 14 * Math.max(1, splitVal.length);
     });
 
-    // Essays
+    // Essays & Aspirations
     const essays = [
       ["Exchange Essay 1 (Cultural Exchange & Adaptability):", state.appData.klyesEssay1],
       ["Exchange Essay 2 (Host Family & Culture):", state.appData.klyesEssay2],
       ["Host Family Introductory Letter Draft:", state.appData.hostFamilyLetter],
       ["Personal Statement Main Essay Draft:", state.appData.commonAppEssay],
+      ["5-Year Vision & Goals:", state.appData.fiveYearVision],
+      ["Why You Should Be Selected (Merit & Values):", state.appData.whySelected],
+      ["Community Impact & Return Contribution:", state.appData.communityContribution],
+      ["Long-Term Career & Academic Aspirations:", state.appData.careerGoals],
     ];
 
     essays.forEach(([title, body]) => {
