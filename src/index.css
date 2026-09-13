@@ -33,9 +33,18 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-accent {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 6px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(41,38,38,0.2); border-radius: 3px; }
+
+/* Scrollbar hide utility for mobile tab scroll */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* Range input */
 input[type="range"] {
@@ -53,4 +62,5 @@ input[type="range"]::-webkit-slider-thumb {
   background: #292626;
   cursor: pointer;
 }
+
 

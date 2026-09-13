@@ -832,7 +832,7 @@ function saveAppState(state: AppState) {
 
 function Logo({ small }: { small?: boolean }) {
   return (
-    <div className={`flex items-center gap-2.5 ${small ? "" : "gap-3"}`}>
+    <div className={`flex items-center gap-2.5 ${small ? "" : "gap-3"} shrink-0`}>
       <svg width={small ? "24" : "30"} height={small ? "24" : "30"} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="4" y="2" width="18" height="24" rx="1.5" stroke="#363636" strokeWidth="1.5" fill="none"/>
         <line x1="8" y1="8" x2="18" y2="8" stroke="#363636" strokeWidth="1.2"/>
@@ -841,7 +841,7 @@ function Logo({ small }: { small?: boolean }) {
         <polyline points="14,20 17,23 24,15" stroke="#363636" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
       </svg>
       <div>
-        <div className={`font-bold leading-none text-[#363636] ${small ? "text-sm" : "text-base"}`}>
+        <div className={`font-bold leading-none text-[#363636] whitespace-nowrap ${small ? "text-sm" : "text-base"}`}>
           Ready To Apply
         </div>
         {!small && (
@@ -850,7 +850,7 @@ function Logo({ small }: { small?: boolean }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="text-[10px] text-gray-500 hover:text-[#363636] transition-colors font-medium mt-1 block"
+            className="text-[10px] text-gray-500 hover:text-[#363636] transition-colors font-medium mt-1 block whitespace-nowrap"
           >
             A YAN Initiative ↗
           </a>
@@ -862,8 +862,8 @@ function Logo({ small }: { small?: boolean }) {
 
 function PracticeBadge() {
   return (
-    <span className="text-xs font-semibold text-gray-500">
-      (Practice Only)
+    <span className="inline-flex items-center text-[10px] sm:text-[11px] font-semibold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded whitespace-nowrap shrink-0">
+      Practice Only
     </span>
   );
 }
@@ -1301,15 +1301,15 @@ function HomePage({ setPage, onLoadSample }: { setPage: (p: Page) => void; onLoa
                 label: "Checklist Tracker",
               },
             ].map((card, i) => (
-              <div key={i} className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-all">
+              <div key={i} className="border border-gray-200 bg-gray-50/80 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-100/70 hover:shadow-md transition-all">
                 <div>
-                  <div className="inline-block text-[11px] font-bold text-[#363636] bg-gray-100 border border-gray-200 px-2.5 py-0.5 rounded-md mb-3">0{i + 1}</div>
+                  <div className="inline-block text-[11px] font-bold text-[#363636] bg-gray-200/80 border border-gray-300 px-2.5 py-0.5 rounded-md mb-3">0{i + 1}</div>
                   <h3 className="text-lg font-bold text-[#363636] mb-2">{card.title}</h3>
                   <p className="text-xs text-gray-600 leading-relaxed mb-6">{card.desc}</p>
                 </div>
                 <button
                   onClick={card.action}
-                  className="text-xs font-semibold border border-gray-300 py-2.5 px-4 rounded-lg text-gray-800 hover:bg-[#363636] hover:text-white transition-all text-center"
+                  className="text-xs font-semibold border border-gray-300 py-2.5 px-4 rounded-lg text-gray-800 bg-white hover:bg-[#363636] hover:text-white transition-all text-center"
                 >
                   {card.label} →
                 </button>
@@ -1397,7 +1397,7 @@ function Dashboard({
       </div>
 
       {/* Overall score card */}
-      <div className="border border-gray-200 bg-white rounded-xl p-6 md:p-8 mb-10 shadow-xs">
+      <div className="border border-gray-200 bg-gray-50/90 rounded-xl p-6 md:p-8 mb-10 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="text-xs font-semibold text-gray-600 mb-1">Overall Preparation</div>
@@ -1407,7 +1407,7 @@ function Dashboard({
             </div>
           </div>
           <div className="w-full md:w-64">
-            <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+            <div className="h-2.5 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
               <div className="h-2.5 bg-[#363636] transition-all duration-500 rounded-full" style={{ width: `${overall}%` }}/>
             </div>
           </div>
@@ -1417,7 +1417,7 @@ function Dashboard({
       {/* 5 Core Feature Cards */}
       <div className="space-y-4 mb-10">
         {/* Card 1: Application Practice */}
-        <div className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
+        <div className="border border-gray-200 bg-gray-50/80 hover:bg-gray-100/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
           <div className="flex-1">
             <div className="flex items-center gap-2.5 mb-1">
               <span className="text-xs font-bold text-gray-400">01</span>
@@ -1426,7 +1426,7 @@ function Dashboard({
             </div>
             <p className="text-xs text-gray-600">Personal Info, Education, Family Background, and Future Plans.</p>
             <div className="flex items-center gap-3 mt-3">
-              <div className="w-36 h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+              <div className="w-36 h-2 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
                 <div className="h-2 bg-[#363636] rounded-full" style={{ width: `${appProg}%` }}/>
               </div>
               <span className="text-xs font-semibold text-gray-700">{appProg}% Complete</span>
@@ -1434,14 +1434,14 @@ function Dashboard({
           </div>
           <button
             onClick={() => setPage("app-practice")}
-            className="text-xs border border-gray-300 text-gray-800 px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
+            className="text-xs border border-gray-300 text-gray-800 bg-white px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
           >
             {appProg === 100 ? "Revisit Practice" : appProg > 0 ? "Continue Practice" : "Start Section"}
           </button>
         </div>
 
         {/* Card 2: Financial Aid Practice */}
-        <div className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
+        <div className="border border-gray-200 bg-gray-50/80 hover:bg-gray-100/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
           <div className="flex-1">
             <div className="flex items-center gap-2.5 mb-1">
               <span className="text-xs font-bold text-gray-400">02</span>
@@ -1450,7 +1450,7 @@ function Dashboard({
             </div>
             <p className="text-xs text-gray-600">11 detailed financial modules — income, bank, taxes, expenses, property, loans, and tuition.</p>
             <div className="flex items-center gap-3 mt-3">
-              <div className="w-36 h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+              <div className="w-36 h-2 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
                 <div className="h-2 bg-[#363636] rounded-full" style={{ width: `${faProg}%` }}/>
               </div>
               <span className="text-xs font-semibold text-gray-700">{faProg}% Complete</span>
@@ -1458,14 +1458,14 @@ function Dashboard({
           </div>
           <button
             onClick={() => setPage("fa-practice")}
-            className="text-xs border border-gray-300 text-gray-800 px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
+            className="text-xs border border-gray-300 text-gray-800 bg-white px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
           >
             {faProg === 100 ? "Revisit Modules" : faProg > 0 ? "Continue Modules" : "Start Modules"}
           </button>
         </div>
 
         {/* Card 3: Activities & Honors */}
-        <div className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
+        <div className="border border-gray-200 bg-gray-50/80 hover:bg-gray-100/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
           <div className="flex-1">
             <div className="flex items-center gap-2.5 mb-1">
               <span className="text-xs font-bold text-gray-400">03</span>
@@ -1474,7 +1474,7 @@ function Dashboard({
             </div>
             <p className="text-xs text-gray-600">Extracurricular list, leadership roles, time commitments, and awards & honors.</p>
             <div className="flex items-center gap-3 mt-3">
-              <div className="w-36 h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+              <div className="w-36 h-2 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
                 <div className="h-2 bg-[#363636] rounded-full" style={{ width: `${actProg}%` }}/>
               </div>
               <span className="text-xs font-semibold text-gray-700">
@@ -1484,14 +1484,14 @@ function Dashboard({
           </div>
           <button
             onClick={() => setPage("activities-honors")}
-            className="text-xs border border-gray-300 text-gray-800 px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
+            className="text-xs border border-gray-300 text-gray-800 bg-white px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
           >
             Edit Activities
           </button>
         </div>
 
         {/* Card 4: Document Checklist */}
-        <div className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
+        <div className="border border-gray-200 bg-gray-50/80 hover:bg-gray-100/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-sm transition-all">
           <div className="flex-1">
             <div className="flex items-center gap-2.5 mb-1">
               <span className="text-xs font-bold text-gray-400">04</span>
@@ -1499,7 +1499,7 @@ function Dashboard({
             </div>
             <p className="text-xs text-gray-600">Academic, Personal, Application, and Financial Aid paperwork tracking.</p>
             <div className="flex items-center gap-3 mt-3">
-              <div className="w-36 h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+              <div className="w-36 h-2 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
                 <div className="h-2 bg-[#363636] rounded-full" style={{ width: `${docProg}%` }}/>
               </div>
               <span className="text-xs font-semibold text-gray-700">{docProg}% Documents Ready</span>
@@ -1507,14 +1507,14 @@ function Dashboard({
           </div>
           <button
             onClick={() => setPage("documents")}
-            className="text-xs border border-gray-300 text-gray-800 px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
+            className="text-xs border border-gray-300 text-gray-800 bg-white px-5 py-2.5 font-semibold rounded-lg hover:bg-[#363636] hover:text-white transition-all text-center shrink-0"
           >
             Update Checklist
           </button>
         </div>
 
         {/* Card 5: Final Review */}
-        <div className="border border-gray-300 bg-gray-50/60 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="border border-gray-300 bg-gray-100/70 rounded-xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2.5 mb-1">
               <span className="inline-block text-[11px] font-bold text-[#363636] bg-gray-200 border border-gray-300 px-2 py-0.5 rounded">05</span>
@@ -1605,7 +1605,7 @@ function ApplicationPracticeModule({
       </div>
 
       {/* Section Navigation Tabs */}
-      <div className="flex overflow-x-auto gap-1 border-b border-gray-200 pb-px mb-8">
+      <div className="flex overflow-x-auto gap-1.5 border-b border-gray-200 pb-px mb-8 scrollbar-none whitespace-nowrap">
         {APP_SECTIONS.map((s, idx) => {
           const st = secStatus[s.id] ?? "not-started";
           const isActive = idx === activeSecIdx;
@@ -1613,7 +1613,7 @@ function ApplicationPracticeModule({
             <button
               key={s.id}
               onClick={() => setActiveSecIdx(idx)}
-              className={`text-xs px-4 py-2.5 font-semibold shrink-0 border-b-2 transition-all ${
+              className={`text-xs px-3.5 sm:px-4 py-2.5 font-semibold shrink-0 whitespace-nowrap border-b-2 transition-all ${
                 isActive ? "border-[#363636] text-[#363636]" : "border-transparent text-gray-500 hover:text-[#363636]"
               }`}
             >
@@ -1624,7 +1624,7 @@ function ApplicationPracticeModule({
       </div>
 
       {/* Section Content */}
-      <div className="bg-white border border-gray-200 rounded-xl p-6 md:p-8 mb-8 shadow-xs">
+      <div className="bg-gray-50/90 border border-gray-200 rounded-xl p-6 md:p-8 mb-8 shadow-xs">
         <h2 className="text-xl font-bold text-[#363636] mb-1">
           {sec.title}
         </h2>
@@ -1681,24 +1681,24 @@ function ApplicationPracticeModule({
       </div>
 
       {/* Buttons */}
-      <div className="flex items-center gap-3 border-t border-gray-200 pt-6">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-t border-gray-200 pt-6">
         {!isFirst && (
           <button
             onClick={() => setActiveSecIdx(i => i - 1)}
-            className="border border-gray-300 text-gray-700 text-xs px-5 py-2.5 font-semibold rounded-lg hover:bg-gray-50 transition-all"
+            className="border border-gray-300 text-gray-700 text-xs px-5 py-2.5 font-semibold rounded-lg hover:bg-gray-50 transition-all whitespace-nowrap text-center"
           >
             Back
           </button>
         )}
         <button
           onClick={handleSaveOnly}
-          className="border border-gray-300 text-gray-700 text-xs px-4 py-2.5 font-medium rounded-lg hover:bg-gray-50 transition-all"
+          className="border border-gray-300 text-gray-700 text-xs px-4 py-2.5 font-medium rounded-lg hover:bg-gray-50 transition-all whitespace-nowrap text-center"
         >
           Save Draft &amp; Export PDF
         </button>
         <button
           onClick={handleNext}
-          className="ml-auto bg-[#363636] text-white text-xs px-6 py-2.5 font-semibold rounded-lg hover:bg-[#2a2a2a] transition-all shadow-xs"
+          className="sm:ml-auto bg-[#363636] text-white text-xs px-6 py-2.5 font-semibold rounded-lg hover:bg-[#2a2a2a] transition-all shadow-xs whitespace-nowrap text-center"
         >
           {isLast ? "Complete Section & Export PDF" : "Save & Continue (PDF) →"}
         </button>
@@ -1828,9 +1828,28 @@ function FinancialAidModule({
         </div>
       </div>
 
+      {/* Mobile Horizontal Module Selector (single-line horizontal scroll) */}
+      <div className="md:hidden flex overflow-x-auto gap-2 pb-2 mb-2 scrollbar-none whitespace-nowrap border-b border-gray-200">
+        {FA_MODULES.map(m => {
+          const st = faModules[m.id]?.status ?? "not-started";
+          const isSel = m.id === selectedModId;
+          return (
+            <button
+              key={m.id}
+              onClick={() => setSelectedModId(m.id)}
+              className={`text-xs px-3.5 py-2 rounded-lg shrink-0 whitespace-nowrap transition-all border ${
+                isSel ? "border-[#363636] bg-[#363636] font-semibold text-white shadow-xs" : "border-gray-200 text-gray-700 bg-white hover:bg-gray-50"
+              }`}
+            >
+              {m.label} {st === "complete" ? "✓" : ""}
+            </button>
+          );
+        })}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Sidebar module list */}
-        <div className="md:col-span-1 space-y-1.5">
+        {/* Desktop Sidebar module list */}
+        <div className="hidden md:block md:col-span-1 space-y-1.5">
           <div className="text-xs font-bold text-gray-800 mb-3">Modules</div>
           {FA_MODULES.map(m => {
             const st = faModules[m.id]?.status ?? "not-started";
@@ -1851,7 +1870,7 @@ function FinancialAidModule({
         </div>
 
         {/* Form area */}
-        <div className="md:col-span-3 bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-xs">
+        <div className="md:col-span-3 bg-gray-50/90 border border-gray-200 rounded-xl p-6 md:p-8 shadow-xs">
           {/* Simple eyebrow step header without dots, pills, circles, or borders */}
           <div className="text-xs font-medium text-gray-500 mb-2">
             {mod.label} — Step {stepIdx + 1} of {steps.length || 1}
@@ -2212,10 +2231,10 @@ function ActivitiesHonorsModule({
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 mb-8">
+      <div className="flex overflow-x-auto gap-1 border-b border-gray-200 mb-8 scrollbar-none whitespace-nowrap">
         <button
           onClick={() => setTab("activities")}
-          className={`text-xs px-6 py-2.5 font-bold border-b-2 transition-all ${
+          className={`text-xs px-4 sm:px-6 py-2.5 font-bold border-b-2 shrink-0 whitespace-nowrap transition-all ${
             tab === "activities" ? "border-[#363636] text-[#363636]" : "border-transparent text-gray-500 hover:text-[#363636]"
           }`}
         >
@@ -2223,7 +2242,7 @@ function ActivitiesHonorsModule({
         </button>
         <button
           onClick={() => setTab("honors")}
-          className={`text-xs px-6 py-2.5 font-bold border-b-2 transition-all ${
+          className={`text-xs px-4 sm:px-6 py-2.5 font-bold border-b-2 shrink-0 whitespace-nowrap transition-all ${
             tab === "honors" ? "border-[#363636] text-[#363636]" : "border-transparent text-gray-500 hover:text-[#363636]"
           }`}
         >
@@ -2234,7 +2253,7 @@ function ActivitiesHonorsModule({
       {tab === "activities" && (
         <div className="space-y-8">
           {/* Add Activity Form */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-xs">
+          <div className="bg-gray-50/90 border border-gray-200 rounded-xl p-6 shadow-xs">
             <h3 className="text-base font-bold text-[#363636] mb-4">
               Add New Activity
             </h3>
@@ -2246,7 +2265,7 @@ function ActivitiesHonorsModule({
                   value={newAct.name}
                   onChange={e => setNewAct({ ...newAct, name: e.target.value })}
                   placeholder="e.g. Student Council, Debate Club"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2256,7 +2275,7 @@ function ActivitiesHonorsModule({
                   value={newAct.organization}
                   onChange={e => setNewAct({ ...newAct, organization: e.target.value })}
                   placeholder="e.g. High School"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2266,7 +2285,7 @@ function ActivitiesHonorsModule({
                   value={newAct.role}
                   onChange={e => setNewAct({ ...newAct, role: e.target.value })}
                   placeholder="e.g. President, Captain, Member"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2276,7 +2295,7 @@ function ActivitiesHonorsModule({
                   value={newAct.yearsInvolved}
                   onChange={e => setNewAct({ ...newAct, yearsInvolved: e.target.value })}
                   placeholder="e.g. Grade 10, 11, 12"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2286,7 +2305,7 @@ function ActivitiesHonorsModule({
                   value={newAct.hoursPerWeek}
                   onChange={e => setNewAct({ ...newAct, hoursPerWeek: e.target.value })}
                   placeholder="e.g. 5"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2296,7 +2315,7 @@ function ActivitiesHonorsModule({
                   value={newAct.weeksPerYear}
                   onChange={e => setNewAct({ ...newAct, weeksPerYear: e.target.value })}
                   placeholder="e.g. 30"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div className="md:col-span-2">
@@ -2306,7 +2325,7 @@ function ActivitiesHonorsModule({
                   onChange={e => setNewAct({ ...newAct, description: e.target.value })}
                   placeholder="Describe your responsibilities, leadership actions, and accomplishments."
                   rows={3}
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] resize-none"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] resize-none bg-white"
                 />
               </div>
             </div>
@@ -2321,7 +2340,7 @@ function ActivitiesHonorsModule({
           {/* Activity List */}
           <div className="space-y-4">
             {actList.map(a => (
-              <div key={a.id} className="border border-gray-200 bg-white rounded-xl p-5 flex justify-between gap-4 shadow-xs">
+              <div key={a.id} className="border border-gray-200 bg-gray-50/80 rounded-xl p-5 flex justify-between gap-4 shadow-xs">
                 <div>
                   <div className="text-sm font-bold text-[#363636]">{a.name}</div>
                   <div className="text-xs text-gray-600 font-semibold mt-0.5">{a.role} — {a.organization}</div>
@@ -2339,7 +2358,7 @@ function ActivitiesHonorsModule({
               </div>
             ))}
             {actList.length === 0 && (
-              <div className="text-xs text-gray-500 text-center py-8 border border-dashed border-gray-300 rounded-xl">
+              <div className="text-xs text-gray-500 text-center py-8 border border-dashed border-gray-300 rounded-xl bg-gray-50/50">
                 No activities added yet. Use the form above to practice adding your extracurricular activities.
               </div>
             )}
@@ -2350,7 +2369,7 @@ function ActivitiesHonorsModule({
       {tab === "honors" && (
         <div className="space-y-8">
           {/* Add Honor Form */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-xs">
+          <div className="bg-gray-50/90 border border-gray-200 rounded-xl p-6 shadow-xs">
             <h3 className="text-base font-bold text-[#363636] mb-4">
               Add Award / Honor
             </h3>
@@ -2362,7 +2381,7 @@ function ActivitiesHonorsModule({
                   value={newHon.title}
                   onChange={e => setNewHon({ ...newHon, title: e.target.value })}
                   placeholder="e.g. National Science Olympiad Medalist"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2372,7 +2391,7 @@ function ActivitiesHonorsModule({
                   value={newHon.organization}
                   onChange={e => setNewHon({ ...newHon, organization: e.target.value })}
                   placeholder="e.g. High School, National Foundation"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div>
@@ -2395,7 +2414,7 @@ function ActivitiesHonorsModule({
                   value={newHon.yearReceived}
                   onChange={e => setNewHon({ ...newHon, yearReceived: e.target.value })}
                   placeholder="e.g. 2025 (Grade 11)"
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636]"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] bg-white"
                 />
               </div>
               <div className="md:col-span-2">
@@ -2405,7 +2424,7 @@ function ActivitiesHonorsModule({
                   onChange={e => setNewHon({ ...newHon, description: e.target.value })}
                   placeholder="Briefly describe what this honor was awarded for."
                   rows={2}
-                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] resize-none"
+                  className="w-full border border-gray-300 rounded-lg px-3.5 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#363636] resize-none bg-white"
                 />
               </div>
             </div>
@@ -2420,7 +2439,7 @@ function ActivitiesHonorsModule({
           {/* Honors List */}
           <div className="space-y-4">
             {honList.map(h => (
-              <div key={h.id} className="border border-gray-200 bg-white rounded-xl p-5 flex justify-between gap-4 shadow-xs">
+              <div key={h.id} className="border border-gray-200 bg-gray-50/80 rounded-xl p-5 flex justify-between gap-4 shadow-xs">
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-bold text-[#363636]">{h.title}</span>
@@ -2536,18 +2555,18 @@ function DocumentChecklistModule({
         </div>
       </div>
 
-      <div className="mb-6 flex flex-wrap gap-4 text-xs text-gray-700 font-medium items-center border-b border-gray-200 pb-4">
-        <span className="font-bold text-gray-900">Status Legend:</span>
-        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 bg-[#363636] rounded-full inline-block"/> Ready</span>
-        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 border border-gray-400 rounded-full inline-block"/> Need to get</span>
-        <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 border border-gray-200 bg-gray-100 rounded-full inline-block"/> Not applicable</span>
+      <div className="mb-6 flex flex-wrap gap-x-4 gap-y-2 text-xs text-gray-700 font-medium items-center border-b border-gray-200 pb-4">
+        <span className="font-bold text-gray-900 whitespace-nowrap">Status Legend:</span>
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className="w-2.5 h-2.5 bg-[#363636] rounded-full inline-block"/> Ready</span>
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className="w-2.5 h-2.5 border border-gray-400 rounded-full inline-block"/> Need to get</span>
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap"><span className="w-2.5 h-2.5 border border-gray-200 bg-gray-100 rounded-full inline-block"/> Not applicable</span>
       </div>
 
       <div className="space-y-8">
         {categories.map(cat => {
           const items = docs.filter(d => d.category === cat);
           return (
-            <div key={cat} className="bg-white border border-gray-200 rounded-xl p-6 shadow-xs">
+            <div key={cat} className="bg-gray-50/90 border border-gray-200 rounded-xl p-5 sm:p-6 shadow-xs">
               <h2 className="text-sm font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">
                 {cat}
               </h2>
@@ -2555,18 +2574,18 @@ function DocumentChecklistModule({
                 {items.map(d => {
                   const isCustom = d.id.startsWith("custom_");
                   return (
-                    <div key={d.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-100 last:border-0">
+                    <div key={d.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-gray-200/60 last:border-0">
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-gray-900 font-medium">{d.label}</span>
-                        {isCustom && <span className="text-[10px] bg-gray-100 border border-gray-200 text-gray-700 px-2 py-0.5 font-semibold rounded">Custom</span>}
+                        {isCustom && <span className="text-[10px] bg-gray-100 border border-gray-200 text-gray-700 px-2 py-0.5 font-semibold rounded whitespace-nowrap">Custom</span>}
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        <div className="flex gap-1.5">
+                      <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto">
+                        <div className="flex gap-1.5 shrink-0 whitespace-nowrap">
                           {(["ready", "need-to-get", "not-applicable"] as const).map(s => (
                             <button
                               key={s}
                               onClick={() => setStatus(d.id, d.status === s ? "unchecked" : s)}
-                              className={`text-[11px] border px-3 py-1 font-semibold rounded-md transition-all ${
+                              className={`text-[10px] sm:text-[11px] border px-2.5 sm:px-3 py-1 font-semibold rounded-md transition-all whitespace-nowrap ${
                                 d.status === s
                                   ? s === "ready" ? "bg-[#363636] text-white border-[#363636]" : s === "need-to-get" ? "border-gray-800 text-gray-900 font-bold bg-gray-50" : "border-gray-300 text-gray-500 bg-gray-50"
                                   : "border-gray-200 text-gray-400 hover:border-gray-400 hover:text-gray-700 bg-white"
@@ -2629,7 +2648,7 @@ function FinalReviewModule({
       <p className="text-xs text-gray-600 mb-8">Review preparation status across all 4 practice sections.</p>
 
       {/* Overall Score */}
-      <div className="border border-gray-200 bg-white rounded-xl p-8 mb-10 shadow-xs">
+      <div className="border border-gray-200 bg-gray-50/90 rounded-xl p-8 mb-10 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-gray-200">
           <div>
             <div className="text-xs font-semibold text-gray-600">Preparation Readiness</div>
@@ -2641,7 +2660,7 @@ function FinalReviewModule({
             Ready To Apply Score: {overall}%
           </div>
         </div>
-        <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+        <div className="h-2.5 bg-gray-200/80 rounded-full overflow-hidden border border-gray-300/60">
           <div className="h-2.5 bg-[#363636] rounded-full transition-all duration-500" style={{ width: `${overall}%` }}/>
         </div>
         <p className="text-xs text-gray-500 mt-3">
@@ -2677,11 +2696,11 @@ function FinalReviewModule({
             desc: `${docProg}% documents marked ready`,
           },
         ].map(s => (
-          <div key={s.title} className="border border-gray-200 bg-white rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-all">
+          <div key={s.title} className="border border-gray-200 bg-gray-50/80 hover:bg-gray-100/70 rounded-xl p-6 flex flex-col justify-between hover:shadow-sm transition-all">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-base font-bold text-[#363636]">{s.title}</h2>
-                <span className={`text-xs px-2.5 py-0.5 font-bold rounded-full ${s.prog === 100 ? "bg-[#363636] text-white" : "bg-gray-100 text-gray-700 border border-gray-200"}`}>
+                <span className={`text-xs px-2.5 py-0.5 font-bold rounded-full ${s.prog === 100 ? "bg-[#363636] text-white" : "bg-gray-200/80 text-gray-700 border border-gray-300/60"}`}>
                   {s.prog === 100 ? "Complete" : `${s.prog}%`}
                 </span>
               </div>
@@ -2689,7 +2708,7 @@ function FinalReviewModule({
             </div>
             <button
               onClick={() => setPage(s.target)}
-              className="text-xs font-semibold border border-gray-300 py-2.5 px-4 rounded-lg text-gray-800 hover:bg-[#363636] hover:text-white transition-all text-center self-start w-full"
+              className="text-xs font-semibold border border-gray-300 py-2.5 px-4 rounded-lg text-gray-800 bg-white hover:bg-[#363636] hover:text-white transition-all text-center self-start w-full"
             >
               {s.prog === 100 ? "Revisit Section" : "Continue Section"} →
             </button>
@@ -2712,16 +2731,16 @@ function FinalReviewModule({
       )}
 
       {/* CTAs */}
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
         <button
           onClick={handleDownloadSummary}
-          className="bg-[#363636] text-white px-7 py-3 text-xs font-semibold rounded-lg hover:bg-[#2a2a2a] transition-all shadow-xs flex items-center gap-2"
+          className="bg-[#363636] text-white px-6 py-3 text-xs font-semibold rounded-lg hover:bg-[#2a2a2a] transition-all shadow-xs flex items-center justify-center gap-2 whitespace-nowrap text-center"
         >
-          <span>📄 Ready To Apply — Export PDF Practice Summary</span>
+          <span>📄 Export PDF Practice Summary</span>
         </button>
         <button
           onClick={() => setPage("dashboard")}
-          className="border border-gray-300 text-gray-800 px-6 py-3 text-xs font-semibold rounded-lg hover:bg-gray-50 transition-all"
+          className="border border-gray-300 text-gray-800 px-6 py-3 text-xs font-semibold rounded-lg hover:bg-gray-50 transition-all whitespace-nowrap text-center"
         >
           Back to Dashboard
         </button>
